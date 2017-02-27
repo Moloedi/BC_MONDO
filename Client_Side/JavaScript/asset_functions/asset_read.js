@@ -139,11 +139,11 @@ function loadUpdateAssets()
 			for(var i = 0; i < d.length; i++)
 			{
 				var data = d[i];
-				if(data.VIN == 0) data.VIN = '&lt;<i>VIN</i>&gt;';
-				if(data.make.toLowerCase() == 'undefined' || data.make.trim() == '') data.make = '&lt;<i>make</i>&gt;';
-				if(data.model.toLowerCase() == 'undefined' || data.model.trim() == '') data.model = '&lt;<i>model</i>&gt;';
-				if(data.reg.toLowerCase() == 'undefined' || data.reg.trim() == '') data.reg = '&lt;<i>registration</i>&gt;';
-				if(data.colour.toLowerCase() == 'undefined' || data.colour.trim() == '') data.colour = '&lt;<i>colour</i>&gt;';
+				if(data.VIN == 0) data.VIN = '&lt;<i>CHASSIS#</i>&gt;';
+				if(data.make.toLowerCase() == 'undefined' || data.make.trim() == '') data.make = '&lt;<i>manufacturerName</i>&gt;';
+				if(data.model.toLowerCase() == 'undefined' || data.model.trim() == '') data.model = '&lt;<i>modelName</i>&gt;';
+				if(data.reg.toLowerCase() == 'undefined' || data.reg.trim() == '') data.reg = '&lt;<i>registrationDate</i>&gt;';
+				if(data.colour.toLowerCase() == 'undefined' || data.colour.trim() == '') data.colour = '&lt;<i>colourName</i>&gt;';
 				$('<tr class="foundCars" ><td class="smlBrk"></td><td class="editRw" ><span class="carID">'+data.v5cID+'</span></td><td class="editRw" colspan="2" >[<span class="carVin">'+data.VIN+'</span>] <span class="carMake">'+data.make+'</span> <span class="carModel">'+data.model+'</span>, <span class="carColour">'+data.colour+'</span>, <span class="carReg">'+data.reg+'</span><img src="Icons/Manufacturer/edit.svg" onclick="showEditTbl(this)" class="rtBtn" width="20" height="20" /></td><td class="smlBrk" ></td></tr>').insertAfter('#insAft');
 			}
 		}
