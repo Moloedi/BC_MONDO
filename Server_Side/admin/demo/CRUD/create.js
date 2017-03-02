@@ -9,11 +9,9 @@ let initial_vehicles = require(__dirname+'/../../../blockchain/assets/vehicles/i
 let fs = require('fs');
 
 const TYPES = [
-    'regulator_to_manufacturer',
-    'manufacturer_to_private',
-    'private_to_lease_company',
-    'lease_company_to_private',
-    'private_to_scrap_merchant'
+    'authority_to_custom',
+    'custom_to_dealership',
+    'dealership_to_owner'
 ];
 
 let vehicleData;
@@ -55,7 +53,7 @@ function create(req, res, next, usersToSecurityContext) {
                     let seller = map_ID.user_to_id('DVLA');
                     let buyer = map_ID.user_to_id(car.Owners[1]);
                     return prev.then(function() {
-                        return transferVehicle(v5cID, seller, buyer, 'authority_to_manufacturer');
+                        return transferVehicle(v5cID, seller, buyer, 'authority_to_custom');
                     });
                 }, Promise.resolve());
             })
