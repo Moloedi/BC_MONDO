@@ -64,7 +64,7 @@ config.participants.scrap_merchant = {};
 
 // Regulators
 config.participants.users.regulators[0]= {};
-config.participants.users.regulators[0].company = 'RSB';
+config.participants.users.regulators[0].company = 'DVLA';
 config.participants.users.regulators[0].type = 'RTA';
 config.participants.users.regulators[0].user = 'Brian';
 
