@@ -12,7 +12,7 @@ $(document).ready(function(){
 		$('.dropRw').toggle()
 		if(!typeShowing)
 		{
-			$('#typeTbl').css('border-bottom','2px solid #800000')
+			$('#typeTbl').css('border-bottom','2px solid #00648D')
 		}
 		else
 		{

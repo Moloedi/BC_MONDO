@@ -146,10 +146,10 @@ function getTransactions(){
 					var function_name = "";
 					var update_type = "";
 					var failed = obj.failed;
-					if(payload.indexOf("authority_to_manufacturer") != -1)
+					if(payload.indexOf("authority_to_customs") != -1)
 					{
 						type = "Transfer";
-						function_name = "authority_to_manufacturer";
+						function_name = "authority_to_customs";
 					}
 					if(payload.indexOf("manufacturer_to_private") != -1)
 					{
@@ -211,6 +211,18 @@ function getTransactions(){
 						function_name = "update_colour";
 						update_type = "Colour";
 					}
+					if(payload.indexOf("update_certificate") != -1)
+					{
+						type = "Update";
+						function_name = "update_certificate";
+						update_type = "Certificate";
+					}
+					if(payload.indexOf("update_shipment") != -1)
+					{
+						type = "Update";
+						function_name = "update_shipment";
+						update_type = "Shipment";
+					}
 					if(payload.indexOf("scrap_vehicle") != -1)
 					{
 						type = "Scrap";
@@ -241,7 +253,9 @@ function getTransactions(){
 						var model = get_update("model", v5cID);
 						var reg = get_update("registration", v5cID);
 						var colour = get_update("colour", v5cID);
-						var carDetails = '['+vin+'] '+make+' '+model+', '+reg+', '+colour
+						var certificate = get_update("certificate",v5cID);
+						var shipment = get_update("shipment",v5cID);
+						var carDetails = '['+vin+'] '+make+' '+model+', '+reg+', '+colour+', '+certificate+', '+shipment
 						
 						if(carDetails.indexOf('undefined') != -1)
 						{

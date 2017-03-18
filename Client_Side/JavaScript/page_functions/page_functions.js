@@ -60,7 +60,7 @@ $(document).ready(function(){
                 let v5cID = $(this).find('.v5cID').val();
 
                 $('#chooseConfHd').html('<span>Transaction Complete</span>');
-                $('#confTxt').html('Transaction committed to the blockchain. <br /><br />Manufacturer: '+getCookie('user')+'<br /><br />'+recDets+': '+$('.delName').html()+' (Account '+$('.accAddr').html()+')<br /><br />Vehicles: '+$('#selVhclsTbl tr').length);
+                $('#confTxt').html('Transaction committed to the blockchain. <br /><br />Customs: '+getCookie('user')+'<br /><br />'+recDets+': '+$('.delName').html()+' (Account '+$('.accAddr').html()+')<br /><br />Vehicles: '+$('#selVhclsTbl tr').length);
 
                 let data = {}; //Data to be sent
                 data.function_name= transferName; //E.g. manufacturer_to_private

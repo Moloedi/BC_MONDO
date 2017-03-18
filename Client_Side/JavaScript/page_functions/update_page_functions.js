@@ -21,7 +21,7 @@ function showEditTbl(el)
 	$('#chooseOptTbl').fadeIn(1000);
 	$('#fade').fadeIn(1000);
 	$('#v5cID').val($(el).parent().parent().find('.carID').html());
-	if($(el).siblings('.carVin').html() != '&lt;<i>VIN</i>&gt;')
+	if($(el).siblings('.carVin').html() != '&lt;<i>CHASSIS#</i>&gt;')
 	{
 		$('#vin').prop('readonly', true);
 		$('#vin').css('cursor', 'not-allowed');
@@ -32,7 +32,7 @@ function showEditTbl(el)
 		$('#vin').css('cursor', 'text');
 	}
 	var vin = $(el).siblings('.carVin').html()
-	if(vin == '&lt;<i>VIN</i>&gt;')
+	if(vin == '&lt;<i>CHASSIS#</i>&gt;')
 	{
 		vin = 0;
 	}
@@ -52,20 +52,34 @@ function showEditTbl(el)
 		colour = 'undefined'
 	}
 	var reg = $(el).siblings('.carReg').html()
-	if(reg == '&lt;<i>registration</i>&gt;')
+	if(reg == '&lt;<i>ownershipDate</i>&gt;')
 	{
 		reg = 'undefined'
+	}
+	var certificate = $(el).siblings('.carCertificate').html()
+	if(certificate == '&lt;<i>certificate</i>&gt;')
+	{
+		certificate = 'undefined'
+	}
+	var shipment = $(el).siblings('.carShipment').html()
+	if(shipment == '&lt;<i>shipment</i>&gt;')
+	{
+		shipment = 'undefined'
 	}
 	$('#vin').val(vin);
 	$('#make').val(make);
 	$('#model').val(model);
 	$('#colour').val(colour);
 	$('#reg').val(reg);
+	$('#certificate').val(certificate);
+	$('#shipment').val(shipment);
 	
 	$('#hidVin').val(vin);
 	$('#hidMake').val(make);
 	$('#hidModel').val(model);
 	$('#hidColour').val(colour);
+	$('#hidCertificate').val(certificate);
+	$('#hidShipment').val(shipment);
 	$('#hidReg').val(reg.toUpperCase());
 }
 
@@ -142,10 +156,30 @@ function validate(el)
 		$('#errorRw').find('ul').append('<li>Registration cannot be reset to undefined</li>')
 		failed = true;
 	}
+	if($('#certificate').val().trim() == '')
+	{
+		$('#errorRw').find('ul').append('<li>Certificate cannot be blank</li>')
+		failed = true;
+	}
+	if($('#certificate').val().trim().toLowerCase() == 'undefined' && $('#hidCertificate').val().trim().toLowerCase() != 'undefined')
+	{
+		$('#errorRw').find('ul').append('<li>Certificate cannot be reset to undefined</li>')
+		failed = true;
+	}
+	if($('#shipment').val().trim() == '')
+	{
+		$('#errorRw').find('ul').append('<li>Shipment Company cannot be blank</li>')
+		failed = true;
+	}
+	if($('#shipment').val().trim().toLowerCase() == 'undefined' && $('#hidShipment').val().trim().toLowerCase() != 'undefined')
+	{
+		$('#errorRw').find('ul').append('<li>Shipment Company cannot be reset to undefined</li>')
+		failed = true;
+	}
 	if(!failed)
 	{
 		$('#errorRw').hide();
-		updateAsset($('#vin').val().trim(), $('#make').val().trim(), $('#model').val().trim(), $('#colour').val().trim(), $('#reg').val().trim().toUpperCase(), $('#v5cID').val(), el)
+		updateAsset($('#vin').val().trim(), $('#make').val().trim(), $('#model').val().trim(), $('#colour').val().trim(), $('#reg').val().trim().toUpperCase(), $('#v5cID').val(),$('#certificate').val().trim(),$('#shipment').val().trim(), el)
 	}
 	else
 	{
